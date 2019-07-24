@@ -378,7 +378,7 @@ export default (variables /* : * */ = variable) => {
         alignSelf: null,
         paddingHorizontal: variables.buttonPadding
       },
-      flex: 1,
+      flex: 0.4,
       alignSelf: 'center',
       alignItems: 'flex-end',
       flexDirection: 'row',
@@ -392,7 +392,7 @@ export default (variables /* : * */ = variable) => {
         ? 6
         : 10,
     paddingRight: 10,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     paddingTop: platform === PLATFORM.IOS ? 18 : 0,
     borderBottomWidth:
       platform === PLATFORM.IOS
