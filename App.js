@@ -16,7 +16,8 @@ import store from './src/store';
 
 YellowBox.ignoreWarnings([
   'Remote debugger is in a background tab which may cause apps to perform slowly',
-  '<InputAccessoryView> is not supported on Android yet.'
+  '<InputAccessoryView> is not supported on Android yet.',
+  'Require cycles are allowed, but can result in uninitialized values. Consider refactoring to remove the need for a cycle.'
 ]);
 
 class App extends Component{
