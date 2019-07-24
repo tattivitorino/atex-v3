@@ -20,7 +20,7 @@ class NotificationsCard extends Component {
           <Text dark style={[styles.itemSubtitle]}>{mensagem}</Text>
         </Body>
         <Right>
-          <Button transparent dark onPress={() => { }}>
+          <Button transparent onPress={() => { }}>
             <Icon secondary name="notifications" />
           </Button>
         </Right>
