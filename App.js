@@ -11,9 +11,13 @@ import { Container, Content, Text, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
 
+import { Provider } from 'react-redux';
+import store from './src/store';
+
 YellowBox.ignoreWarnings([
   'Remote debugger is in a background tab which may cause apps to perform slowly',
-  '<InputAccessoryView> is not supported on Android yet.'
+  '<InputAccessoryView> is not supported on Android yet.',
+  'Require cycles are allowed, but can result in uninitialized values. Consider refactoring to remove the need for a cycle.'
 ]);
 
 class App extends Component{
@@ -35,6 +39,7 @@ class App extends Component{
     }
     else {
       return (
+        <Provider store={store}>
           <StyleProvider style={getTheme(material)}>
             <Container>
               <Content>
@@ -42,6 +47,7 @@ class App extends Component{
               </Content>
             </Container>
           </StyleProvider>
+          </Provider>
       );
     }
   }
