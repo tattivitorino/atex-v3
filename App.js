@@ -1,3 +1,5 @@
+import { YellowBox } from 'react-native';
+
 import React, {Component} from 'react';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
@@ -8,6 +10,11 @@ import { Ionicons, Entypo, AntDesign } from '@expo/vector-icons';
 import { Container, Content, Text, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
+
+YellowBox.ignoreWarnings([
+  'Remote debugger is in a background tab which may cause apps to perform slowly',
+  '<InputAccessoryView> is not supported on Android yet.'
+]);
 
 class App extends Component{
   constructor(props) {
