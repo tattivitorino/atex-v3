@@ -1,19 +1,68 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import { AppLoading } from 'expo';
+import { Asset } from 'expo-asset';
+import * as Font from 'expo-font';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+import { Ionicons, Entypo, AntDesign } from '@expo/vector-icons';
+
+import { Container, Content, Text, StyleProvider } from 'native-base';
+import getTheme from './native-base-theme/components';
+import material from './native-base-theme/variables/material';
+
+class App extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      isReady: false
+    };
+  }
+  render(){
+    if (!this.state.isReady && !this.props.skipLoadingScreen) {
+      return (
+        <AppLoading
+          startAsync={this._loadResourcesAsync}
+          onError={this._handleLoadingError}
+          onFinish={this._handleFinishLoading}
+        />
+      );
+    }
+    else {
+      return (
+          <StyleProvider style={getTheme(material)}>
+            <Container>
+              <Content>
+                <Text>Fuck</Text>
+              </Content>
+            </Container>
+          </StyleProvider>
+      );
+    }
+  }
+
+  _loadResourcesAsync = async () => {
+
+    return Promise.all([
+      Asset.loadAsync([
+        require('./assets/imgs/logo.png'),
+        require('./assets/imgs/logo-clean.png')
+      ]),
+      Font.loadAsync({
+        'Roboto': require('native-base/Fonts/Roboto.ttf'),
+        'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+        'Roboto_light': require('./assets/fonts/roboto-light.ttf'),
+        'Roboto_bold': require('./assets/fonts/roboto-bold.ttf'),
+        ...Ionicons.font,
+        ...Entypo.font,
+        ...AntDesign.font
+      })
+    ]);
+  }
+  _handleLoadingError = error => {
+    console.log(error);
+  };
+  _handleFinishLoading = () => {
+    this.setState({ isReady: true });
+  };
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
