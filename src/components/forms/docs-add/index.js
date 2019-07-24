@@ -17,7 +17,13 @@ const addThumb = require('../../../../assets/imgs/add-file.jpg');
 
 const { width: winWidth, height: winHeight } = Dimensions.get('window');
 
-import { ImagePicker, Permissions, DocumentPicker, MediaLibrary, ImageManipulator, FileSystem } from 'expo';
+import * as ImagePicker from 'expo-image-picker';
+import * as ImageManipulator from 'expo-image-manipulator';;
+import * as Permissions from 'expo-permissions';
+import * as DocumentPicker from 'expo-document-picker';
+import * as FileSystem from 'expo-file-system';
+import * as MediaLibrary from 'expo-media-library';
+
 import { MAX_DOC_IMAGE_PIXELS, MAX_FILE_SIZE, MAX_FILE_SIZE_READABLE } from '../../../config';
 
 /**

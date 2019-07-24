@@ -1,5 +1,6 @@
 import { getStorageItemAsync, setStorageItemAsync } from './PersistService';
-import { Permissions, Notifications } from 'expo';
+import { Notifications } from 'expo';
+import * as Permissions from 'expo-permissions';
 import { PUSH_TOKEN_KEY } from '../config';
 
 export const registerForPushNotifications = async () => {

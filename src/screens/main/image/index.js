@@ -4,7 +4,10 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Dimensions, Image, Platform } from 'react-native';
 import { Container, Content, Button, Text, Thumbnail } from 'native-base';
 import BaseHeader from '../../../components/baseHeader';
-import { Constants, ImagePicker, Permissions, ImageManipulator } from 'expo';
+
+import * as ImagePicker from 'expo-image-picker';
+import * as ImageManipulator from 'expo-image-manipulator';;
+import * as Permissions from 'expo-permissions';
 
 import Loader from '../../../components/common/loader';
 

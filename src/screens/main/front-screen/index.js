@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Dimensions, Image, Slider, TouchableHighlight, Platform } from 'react-native';
 import { Container, Content, Button, Text, Thumbnail, Icon } from 'native-base';
 import BaseHeader from '../../../components/baseHeader';
-
-import { Audio, Video } from 'expo';
-
 import material from '../../../../native-base-theme/variables/material';
-
 import AudioPlayer from '../../../components/audioPlayer';
 
 const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = Dimensions.get('window');

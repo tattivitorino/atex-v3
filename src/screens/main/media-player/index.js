@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Dimensions, Image, Slider, TouchableHighlight, Platform, ActivityIndicator } from 'react-native';
 import { Container, Content, Button, Text, Thumbnail, Icon, Card } from 'native-base';
+
 import BaseHeader from '../../../components/baseHeader';
 import AudioPlayer from '../../../components/audioPlayer';
 
-import { Audio, Video } from 'expo';
+import { Audio, Video } from 'expo-av';
 
 import material from '../../../../native-base-theme/variables/material';
 

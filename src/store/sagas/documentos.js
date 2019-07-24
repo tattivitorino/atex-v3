@@ -7,7 +7,7 @@ import { showAlert } from '../../utils';
 import { ALERT_DELAY, VIDEO_TYPES, AUDIO_TYPES, DOC_TYPES, DOCUMENTOLIST_KEY, IMAGE_TYPES, UPLOAD_TIMEOUT } from '../../config';
 import NavigationService from '../../services/NavigationService';
 
-import { FileSystem } from 'expo';
+import * as FileSystem from 'expo-file-system';
 import { NetInfo, AsyncStorage } from 'react-native';
 
 import {

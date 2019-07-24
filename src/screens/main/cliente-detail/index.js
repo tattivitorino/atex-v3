@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Linking, StyleSheet, RefreshControl, TouchableOpacity, Platform } from 'react-native';
-import { LinearGradient } from 'expo';
 import { Container, Content, Icon, Fab, Button, Text, Card, CardItem, Thumbnail, Input, Item, Right, Segment, H1, H2, H3 } from 'native-base';
 
 import { connect } from 'react-redux';
@@ -11,7 +10,7 @@ import ClienteDados from './ClienteDados';
 import ClienteDocumentos from './ClienteDocumentos';
 import { formatString, reverseDate, showConfirm } from '../../../utils';
 
-import { general, gradients } from '../../../styles';
+import { general } from '../../../styles';
 
 const avatar = require('../../../../assets/imgs/avatar.jpg');
 
@@ -134,7 +133,6 @@ class ClienteDetail extends Component {
 
   render() {
     const { fetching, navigation, cliente } = this.props;
-    const { colors, start, end } = gradients.blueVertical;
     const { celular } = cliente;
     return (
       <Container>
@@ -155,23 +153,21 @@ class ClienteDetail extends Component {
               </Button>
             </Right>
           } />
-        <LinearGradient colors={colors} start={start} end={end}>
-          <Segment style={[styles.segmentHolder]}>
+        <Segment style={[styles.segmentHolder]}>
 
-            <Button transparent white style={[styles.segmentButton, this.state.segment === 1 ? styles.segmentButtonActive : null]} onPress={() => {
-              this.onSegmentChange(1)
-            }}>
-              <Icon style={[styles.segmentButtonIcon]} name="ios-person" />
-            </Button>
+          <Button transparent white style={[styles.segmentButton, this.state.segment === 1 ? styles.segmentButtonActive : null]} onPress={() => {
+            this.onSegmentChange(1)
+          }}>
+            <Icon style={[styles.segmentButtonIcon]} name="ios-person" />
+          </Button>
 
-            <Button transparent white style={[styles.segmentButton, this.state.segment === 2 ? styles.segmentButtonActive : null]} onPress={() => {
-              this.onSegmentChange(2)
-            }}>
-              <Icon style={[styles.segmentButtonIcon]} name="ios-list-box" />
-            </Button>
+          <Button transparent white style={[styles.segmentButton, this.state.segment === 2 ? styles.segmentButtonActive : null]} onPress={() => {
+            this.onSegmentChange(2)
+          }}>
+            <Icon style={[styles.segmentButtonIcon]} name="ios-list-box" />
+          </Button>
 
-          </Segment>
-        </LinearGradient>
+        </Segment>
 
         <Content refreshControl={
           <RefreshControl

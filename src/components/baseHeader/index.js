@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StatusBar, Platform, StyleSheet } from 'react-native';
-import { LinearGradient } from 'expo';
 import { Header, Left, Body, Right, Icon, Title, Button } from 'native-base';
 
 import NavigationService from '../../services/NavigationService';
@@ -8,7 +7,6 @@ import { connect } from 'react-redux';
 import { logoutRequest } from '../../store/actions';
 
 import material from '../../../native-base-theme/variables/material';
-import { gradients } from '../../styles';
 
 class BaseHeader extends Component {
   constructor(props) {
@@ -57,21 +55,18 @@ class BaseHeader extends Component {
 
   render() {
     const { title } = this.props;
-    const { colors, start, end } = gradients.blueVertical;
     return (
-      <LinearGradient colors={colors} start={start} end={end}>
-        <Header
-          iosBarStyle={'light-content'}
-          androidStatusBarColor={material.toolbarDefaultBg}
-          style={[styles.headerStyles]}>
-          {this.renderLeft()}
+      <Header
+        iosBarStyle={'light-content'}
+        androidStatusBarColor={material.toolbarDefaultBg}
+        style={[styles.headerStyles]}>
+        {this.renderLeft()}
 
-          {title ? <Body><Title>{title}</Title></Body> : <Body />}
+        {title ? <Body><Title>{title}</Title></Body> : <Body />}
 
-          {this.renderRight()}
+        {this.renderRight()}
 
-        </Header>
-      </LinearGradient>
+      </Header>
     );
   }
 }
