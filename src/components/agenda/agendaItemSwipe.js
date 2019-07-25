@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
-import { Text, Icon, Button, SwipeRow } from 'native-base';
+import { View, StyleSheet } from 'react-native';
+import { Text, Icon, Button } from 'native-base';
+import { SwipeRow } from 'react-native-swipe-list-view';
 import moment from 'moment';
 import styles from './styles';
 
@@ -10,41 +11,61 @@ class AgendaItemSwipe extends PureComponent {
     const { item, navigateTo, deleteAtendimento } = this.props;
     const { id, data, observacoes, titulo } = item;
     return (
-      <View style={{ overflow: 'hidden', marginTop: 17, borderRadius: 5 }}>
+      <View style={[swipeStyles.swipeContainer]}>
+
         <SwipeRow ref={c => this.row = c}
-          style={{ paddingTop: 0, paddingRight: 0, paddingBottom: 0 }}
-          rightOpenValue={-70}
-          body={
-            <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-between' }}>
-              <View style={{ width: '80%', paddingTop: 10, paddingLeft: 10, paddingBottom: 10 }}>
-                <Text secondary style={[styles.itemText, styles.textLarger, styles.fontMedium]}>
-                  {moment(data).format('HH:mm')}
-                </Text>
-                <Text style={[styles.itemText]}>{titulo}</Text>
-                {observacoes ? <Text dark style={[styles.itemText]}>{observacoes}</Text> : null}
-              </View>
-              <View style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-                <Button secondary transparent onPress={() => {
-                  navigateTo(item, 'edit')
-                }}>
-                  <Icon style={{ fontSize: 30 }} name="create" />
-                </Button>
-              </View>
+          rightOpenValue={-75}
+          disableRightSwipe={true}>
+          <View style={[swipeStyles.swipeRowBack]}>
+            <View />
+            <View>
+              <Button danger transparent onPress={() => {
+                this.row.closeRow()
+                deleteAtendimento(id);
+              }}>
+                <Icon style={{ fontSize: 30 }} active name="md-trash" />
+              </Button>
             </View>
-          }
-          right={
-            <Button danger onPress={() => {
-              this.row._root.closeRow()
-              deleteAtendimento(id);
-            }}>
-              <Icon active name="md-trash" />
-            </Button>
-          }
-        />
+          </View>
+          <View style={[swipeStyles.swipeRowFront]}>
+            <View style={{ width: '80%', paddingTop: 10, paddingLeft: 10, paddingBottom: 10 }}>
+              <Text secondary style={[styles.itemText, styles.textLarger, styles.fontMedium]}>
+                {moment(data).format('HH:mm')}
+              </Text>
+              <Text style={[styles.itemText]}>{titulo}</Text>
+              {observacoes ? <Text dark style={[styles.itemText]}>{observacoes}</Text> : null}
+            </View>
+            <View style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+              <Button secondary transparent onPress={() => {
+                navigateTo(item, 'edit')
+              }}>
+                <Icon style={{ fontSize: 30 }} name="create" />
+              </Button>
+            </View>
+          </View>
+        </SwipeRow>
+
       </View>
     );
   }
-
 }
+
+const swipeStyles = StyleSheet.create({
+  swipeContainer: {
+    overflow: 'hidden', marginTop: 17, borderRadius: 5
+  },
+  swipeRowBack: {
+    flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  swipeRowFront: {
+    flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'space-between',
+    backgroundColor: '#fff'
+  }
+});
 
 export default AgendaItemSwipe;
