@@ -43,7 +43,7 @@ class AgendaComponent extends Component {
 
   _renderItem = item => {
     return (
-      <AgendaItemSwipe item={item} navigateTo={this._onItemPress} deleteAtendimento={this.props.deleteAtendimento} />
+      <AgendaItem item={item} navigateTo={this._onItemPress} />
     );
   }
 
