@@ -14,6 +14,9 @@ import material from './native-base-theme/variables/material';
 import { Provider } from 'react-redux';
 import store from './src/store';
 
+import NavigationService from './src/services/NavigationService';
+import RootNavigator from './src/navigation/RootNavigator';
+
 YellowBox.ignoreWarnings([
   'Remote debugger is in a background tab which may cause apps to perform slowly',
   '<InputAccessoryView> is not supported on Android yet.',
@@ -41,13 +44,13 @@ class App extends Component{
       return (
         <Provider store={store}>
           <StyleProvider style={getTheme(material)}>
-            <Container>
-              <Content>
-                <Text>Fuck</Text>
-              </Content>
-            </Container>
+            <RootNavigator
+              ref={navigatorRef => {
+                NavigationService.setTopLevelNavigator(navigatorRef)
+              }}
+            />
           </StyleProvider>
-          </Provider>
+        </Provider>
       );
     }
   }

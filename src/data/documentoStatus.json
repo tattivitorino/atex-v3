@@ -1,0 +1,18 @@
+{
+  "data": {
+    "results": [
+      {
+        "value": "P",
+        "display_name": "PENDENTE"
+      },
+      {
+        "value": "A",
+        "display_name": "APROVADO"
+      },
+      {
+        "value": "R",
+        "display_name": "REPROVADO"
+      }
+    ]
+  }
+}

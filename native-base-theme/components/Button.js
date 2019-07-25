@@ -39,6 +39,17 @@ export default (variables /* : * */ = variable) => {
       color: variables.buttonPrimaryBg
     }
   };
+  const secondaryCommon = {
+    'NativeBase.Text': {
+      color: variables.buttonSecondaryBg
+    },
+    'NativeBase.Icon': {
+      color: variables.buttonSecondaryBg
+    },
+    'NativeBase.IconNB': {
+      color: variables.buttonSecondaryBg
+    }
+  };
   const successCommon = {
     'NativeBase.Text': {
       color: variables.buttonSuccessBg
@@ -124,6 +135,12 @@ export default (variables /* : * */ = variable) => {
         borderColor: variables.buttonPrimaryBg,
         borderWidth: variables.borderWidth * 2
       },
+      '.secondary': {
+        ...secondaryCommon,
+        backgroundColor: 'transparent',
+        borderColor: variables.buttonSecondaryBg,
+        borderWidth: variables.borderWidth * 2
+      },
       '.success': {
         ...successCommon,
         backgroundColor: 'transparent',
@@ -189,6 +206,12 @@ export default (variables /* : * */ = variable) => {
         ...primaryCommon
       },
       backgroundColor: variables.buttonPrimaryBg
+    },
+    '.secondary': {
+      '.bordered': {
+        ...secondaryCommon
+      },
+      backgroundColor: variables.buttonSecondaryBg
     },
 
     '.success': {
@@ -256,6 +279,10 @@ export default (variables /* : * */ = variable) => {
       },
       '.primary': {
         ...primaryCommon,
+      },
+      '.secondary': {
+        ...secondaryCommon,
+        backgroundColor: 'transparent'
       },
       '.success': {
         ...successCommon,
@@ -371,6 +398,7 @@ export default (variables /* : * */ = variable) => {
     borderColor: variables.buttonPrimaryBg,
     borderWidth: null,
     height: 45,
+    alignSelf: 'flex-start',
     flexDirection: 'row',
     elevation: 2,
     shadowColor:

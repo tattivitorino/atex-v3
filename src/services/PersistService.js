@@ -6,7 +6,7 @@
  * APENAS AS CREDENCIAIS DE TOKEN: PUSH, AUTH E REFRESH SERAO ARMAZENADAS NO Secure Store
  */
 
-import { SecureStore } from 'expo';
+import * as SecureStore from 'expo-secure-store';
 
 export const getStorageItem = (key) => {
   SecureStore.getItemAsync(key)
