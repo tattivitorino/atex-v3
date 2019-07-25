@@ -175,10 +175,10 @@ class ClienteForm extends Component {
         </View>
 
         <View style={{ width: 50 }}>
-          <Button transparent dark onPress={() => {
+          <Button transparent onPress={() => {
             this._setModalVisible(true)
           }}>
-            <Icon name="search" />
+            <Icon dark name="search" />
           </Button>
         </View>
 

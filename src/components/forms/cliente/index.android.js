@@ -156,8 +156,8 @@ class ClienteForm extends Component {
         </View>
 
         <View style={{ width: 50 }}>
-          <Button transparent dark onPress={() => { }}>
-            <Icon name="search" />
+          <Button transparent onPress={() => { }}>
+            <Icon dark name="search" />
           </Button>
         </View>
 
